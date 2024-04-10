@@ -11,10 +11,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
- * @author Windows
+ * @author William Toloto
  */
 public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findUserByDoc(String doc);
     
-    Optional<User> findUserByDoc(Long id);
+    Optional<User> findUserById(Long id);
 }
