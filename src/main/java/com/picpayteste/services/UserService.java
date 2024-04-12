@@ -6,8 +6,10 @@ package com.picpayteste.services;
 
 import com.picpayteste.domain.user.User;
 import com.picpayteste.domain.user.UserType;
+import com.picpayteste.dto.UserDTO;
 import com.picpayteste.repository.UserRepository;
 import java.math.BigDecimal;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,8 +39,18 @@ public class UserService {
         
     }
     
+    public User createUser(UserDTO data){
+        User newUser = new User(data);
+        this.saveUser(newUser);
+        return newUser;
+    }
+    
     public void saveUser(User user){
         this.userRepository.save(user);
+    }
+    
+    public List<User> getAllUsers(){
+        return this.userRepository.findAll();
     }
     
 }

@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.picpayteste.domain.user;
+import com.picpayteste.dto.UserDTO;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -15,6 +16,7 @@ import java.math.BigDecimal;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
@@ -28,6 +30,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @EqualsAndHashCode(of="id")
 
 public class User {
@@ -53,5 +56,13 @@ public class User {
     @Enumerated(EnumType.STRING)    
     private UserType userType;
     
-    
+    public User(UserDTO user){
+        this.firstName = user.firstname();
+        this.lastName = user.lastname();
+        this.doc = user.doc();
+        this.balance = user.balance();
+        this.password = user.password();
+        this.email = user.email();
+        this.userType = user.userType();
+    }
 }
